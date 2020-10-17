@@ -140,6 +140,23 @@ class ProductController extends Controller
         return response()->json($products, 200);
     }
 
+    public function getImagen($name)
+    {
+        $exists = Storage::exists($name);
+
+        if ($exists) {
+
+            $file = Storage::get($name);
+
+            return new Response($file, 200);
+        }
+
+        return response([
+            'status' => '404',
+            'error' => 'No se encontro la imagen'
+        ], 404);
+    }
+
 
 
 }

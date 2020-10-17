@@ -58,8 +58,8 @@ class ReserveController extends Controller
     public function horasReservadas(Request $request){
 
         $reserves=Reserve::join('branches','reserves.id_branch','branches.id')
-        ->where('branches.id',$request->id_branch)
-        ->where('date',$request->date)->select(DB::raw('time,count(*)'))->groupBy('time')
+        ->where('branches.id',$request['0']['id_branch'])
+        ->where('date',$request['0']['date'])->select(DB::raw('time,count(*)'))->groupBy('time')
         ->having('count(*)','>','2')->get();
 
         return response()->json($reserves, 200);
