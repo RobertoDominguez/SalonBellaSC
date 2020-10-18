@@ -19,6 +19,7 @@
                                 <th>Telefono</th>
                                 <th>Servicio</th>
                                 <th>Hora</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -27,6 +28,7 @@
                                 <th>Telefono</th>
                                 <th>Servicio</th>
                                 <th>Hora</th>
+                                <th></th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -36,6 +38,12 @@
                                 <td>{{$reserve->phone}}</td>
                                 <td>{{$reserve->service_name}}</td>
                                 <td>{{$reserve->time}}</td>
+                                <td>
+                                    <form action="{{route('reserves1.destroy',$reserve->id)}}" method="post">
+                                        {{ csrf_field() }}
+                                        <button type="submit" class="btn btn-danger" >Eliminar</button>
+                                    </form>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

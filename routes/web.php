@@ -44,3 +44,8 @@ Route::post('/agregar_servicio',[ServiceController::class,'store'])->name('servi
 Route::get('/editar_servicio/{service}',[ServiceController::class,'edit'])->name('services.edit');
 Route::post('/editar_servicio/{service}',[ServiceController::class,'update'])->name('services.update');
 Route::post('/eliminar_servicio/{service}',[ServiceController::class,'destroy'])->name('services.destroy');
+
+//reserves
+Route::post('/eliminar_servicio1/{reserve}',[ReserveController::class,'destroy1'])->name('reserves1.destroy');
+Route::post('/eliminar_servicio2/{reserve}',[ReserveController::class,'destroy2'])->name('reserves2.destroy');
+Route::post('/eliminar_servicio3/{reserve}',[ReserveController::class,'destroy3'])->name('reserves3.destroy');

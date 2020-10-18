@@ -37,6 +37,24 @@ class ReserveController extends Controller
         return view('reservas_centenario',compact('reserves'));
     }
 
+    public function destroy1($reserve){
+        $reserve=Reserve::find($reserve);
+        $reserve->delete();
+        return redirect()->route('sucursal1');
+    }
+
+    public function destroy2($reserve){
+        $reserve=Reserve::find($reserve);
+        $reserve->delete();
+        return redirect()->route('sucursal2');
+    }
+
+    public function destroy3($reserve){
+        $reserve=Reserve::find($reserve);
+        $reserve->delete();
+        return redirect()->route('sucursal3');
+    }
+
     ////apis
     public function store(Request $request){
         $service=Service::find($request->id_service);
