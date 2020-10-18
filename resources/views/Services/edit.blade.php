@@ -45,6 +45,15 @@
                                     <input type="number" name="price" value="{{$service->price}}" min="1" max="999" class="form-control">
                                 </div>
                             </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Imagen:</strong>
+                                    <div class="input-group">
+                                        <input name="image" type="file" id="imagen" onchange="validarFile(this);">
+                                      </div>
+                                </div>
+                            </div>
                             
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
@@ -59,6 +68,30 @@
 
     </div>
 
+    <script>
+        //Funcion de JS que valida el archivo ingresado al input. Formato y Tamaño.
+        function validarFile(all)
+        {
+            //EXTENSIONES Y TAMANO PERMITIDO.
+            var extensiones_permitidas = [".png", ".bmp", ".jpg", ".jpeg", ".pdf", ".doc", ".docx", ".gif"];
+            var tamano = 8; // EXPRESADO EN MB.
+            var rutayarchivo = all.value;
+            var ultimo_punto = all.value.lastIndexOf(".");
+            var extension = rutayarchivo.slice(ultimo_punto, rutayarchivo.length);
+            if(extensiones_permitidas.indexOf(extension) == -1)
+            {
+                alert("Extensión de archivo no valida");
+                document.getElementById(all.id).value = "";
+                return; // Si la extension es no válida ya no chequeo lo de abajo.
+            }
+            if((all.files[0].size / 1048576) > tamano)
+            {
+                alert("El archivo no puede superar los "+tamano+"MB");
+                document.getElementById(all.id).value = "";
+                return;
+            }
+        }
+    </script>
    
 </body>
 @endsection

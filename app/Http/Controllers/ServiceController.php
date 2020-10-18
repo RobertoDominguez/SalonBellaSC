@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Storage;
+
 class ServiceController extends Controller
 {
 
@@ -51,7 +53,12 @@ class ServiceController extends Controller
             'name'=>$request->name,
             'description'=>$request->description,
             'price'=>$request->price,
+            'link_image'=>'',
         ];
+
+        if ($request->has('image')) {
+            $datos['link_image'] = $request->image->store('services');
+        }
 
         $servicio=Service::create($datos);
 
@@ -101,6 +108,11 @@ class ServiceController extends Controller
             'price'=>$request->price,
         ];
 
+        if (!is_null($request->image)) {
+            Storage::delete($service->image);
+            $datos['link_image'] = $request->image->store('services');
+        }
+
         $service->update($datos);
 
         return redirect()->route('services.index')->with('success','Servicio ha sido actualizado');
@@ -114,6 +126,7 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
+        Storage::delete($service->link_image);
         $service->delete();
         return redirect()->route('services.index')->with('success','Servicio ha sido eliminado');
     }

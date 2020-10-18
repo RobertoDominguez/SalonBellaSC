@@ -18,6 +18,7 @@ class CreateServicesTable extends Migration
             $table->string('name');
             $table->UnsignedFloat('price');
             $table->text('description');
+            $table->string('link_image');
             $table->timestamps();
         });
     }
