@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReserveController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\BranchController;
 
 Route::post('/nueva_reserva',[ReserveController::class,'store']);
 
@@ -24,3 +26,5 @@ Route::post('/productos',[ProductController::class,'all']);
 Route::post('/servicios',[ServiceController::class,'all']);
 
 Route::post('/horas_reservadas',[ReserveController::class,'horasReservadas']);
+
+Route::post('/telefonos',[BranchController::class,'getPhones']);

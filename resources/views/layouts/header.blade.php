@@ -71,6 +71,7 @@
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="{{route('services.index')}}">Servicios</a>
                                 <a class="nav-link" href="{{route('products.index')}}">Productos</a>
+                                <a class="nav-link" href="{{route('phones.edit')}}">Telefonos</a>
                             </nav>
                         </div>
                     </div>

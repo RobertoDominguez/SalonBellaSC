@@ -1,6 +1,8 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReserveController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\BranchController;
 
 
 Route::get('/login',[UserController::class,'getLogin'])->name('login');
@@ -49,3 +52,14 @@ Route::post('/eliminar_servicio/{service}',[ServiceController::class,'destroy'])
 Route::post('/eliminar_servicio1/{reserve}',[ReserveController::class,'destroy1'])->name('reserves1.destroy');
 Route::post('/eliminar_servicio2/{reserve}',[ReserveController::class,'destroy2'])->name('reserves2.destroy');
 Route::post('/eliminar_servicio3/{reserve}',[ReserveController::class,'destroy3'])->name('reserves3.destroy');
+
+
+Route::get('/producto/get_imagen/{name}',[ProductController::class,'getImagen']);
+
+Route::get('/foo', function () {
+    Artisan::call('storage:link');
+});
+
+
+Route::get('/editar_telefonos',[BranchController::class,'index'])->name('phones.edit');
+Route::post('/editar_telefonos/{branch}',[BranchController::class,'edit'])->name('phones.update');
